@@ -23,24 +23,17 @@ A Django 4.2 application demonstrating multi-database architecture, custom user 
 
 ## Screenshots
 
-### User Authentication
-![Authentication](docs/screenshots/<img width="1913" height="966" alt="Screenshot 2026-06-13 161100" src="https://github.com/user-attachments/assets/4040932b-89ba-4e9a-b253-a34520f8639a" />
-)
+![](docs/screenshots/auth.png)
 
-### User Feed & Posts
-![User Feed](docs/screenshots/feed.png)
+![](docs/screenshots/feed.png)
 
-### User Profile
-![Profile](docs/screenshots/profile.png)
+![](docs/screenshots/profile.png)
 
-### Product Inventory
-![Product List](docs/screenshots/products.png)
+![](docs/screenshots/products.png)
 
-### Product Details & CRUD
-![Product Detail](docs/screenshots/product_detail.png)
+![](docs/screenshots/product_detail.png)
 
-### Admin Dashboard (Multi-Database)
-![Admin Interface](docs/screenshots/admin.png)
+![](docs/screenshots/admin.png)
 
 ---
 
