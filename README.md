@@ -24,7 +24,8 @@ A Django 4.2 application demonstrating multi-database architecture, custom user 
 ## Screenshots
 
 ### User Authentication
-![Authentication](docs/screenshots/auth.png)
+![Authentication](docs/screenshots/<img width="1913" height="966" alt="Screenshot 2026-06-13 161100" src="https://github.com/user-attachments/assets/4040932b-89ba-4e9a-b253-a34520f8639a" />
+)
 
 ### User Feed & Posts
 ![User Feed](docs/screenshots/feed.png)
