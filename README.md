@@ -21,22 +21,6 @@ A Django 4.2 application demonstrating multi-database architecture, custom user 
 
 ---
 
-## Screenshots
-
-![](docs/screenshots/auth.png)
-
-![](docs/screenshots/feed.png)
-
-![](docs/screenshots/profile.png)
-
-![](docs/screenshots/products.png)
-
-![](docs/screenshots/product_detail.png)
-
-![](docs/screenshots/admin.png)
-
----
-
 ## Project Structure
 
 ```
