@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h4 class="fw-bold mb-0">
+    <i class="fas fa-box me-2 text-primary"></i>Products
+    <span class="badge bg-primary badge-db ms-2">products_db</span>
+  </h4>
+  {% if request.user.is_authenticated %}
+  <a href="{% url 'products:create' %}" class="btn btn-brand btn-sm">
+    <i class="fas fa-plus me-1"></i>Add Product
+  </a>
+  {% endif %}
+</div>
+<form method="get" class="mb-4">
+  <div class="input-group">
+    <input type="text" name="q" value="{{ query }}" class="form-control" placeholder="Search products…">
+    <button class="btn btn-brand" type="submit"><i class="fas fa-search"></i></button>
+    {% if query %}<a href="{% url 'products:list' %}" class="btn btn-outline-secondary">Clear</a>{% endif %}
+  </div>
+</form>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for product in page_obj %}
+  <div class="col">
+    <div class="card h-100 post-card">
+      {% if product.image %}
+        <img src="{{ product.image.url }}" class="card-img-top" style="height:180px;object-fit:cover;">
+      {% else %}
+        <div class="d-flex align-items-center justify-content-center bg-light" style="height:180px;border-radius:12px 12px 0 0;">
+          <i class="fas fa-box fa-3x text-muted"></i>
+        </div>
+      {% endif %}
+      <div class="card-body">
+        <h6 class="fw-bold">{{ product.name }}</h6>
+        <div class="text-primary fw-bold fs-5">₹{{ product.price }}</div>
+        <div class="text-muted small">{{ product.weight }} kg</div>
+        {% if product.description %}<p class="small text-muted mt-2 mb-0">{{ product.description|truncatewords:15 }}</p>{% endif %}
+      </div>
+      <div class="card-footer d-flex justify-content-between align-items-center bg-transparent border-0 pb-3 px-3">
+        <span class="badge {% if product.in_stock %}bg-success{% else %}bg-danger{% endif %}">
+          {% if product.in_stock %}In Stock{% else %}Out of Stock{% endif %}
+        </span>
+        <a href="{% url 'products:detail' product.pk %}" class="btn btn-sm btn-outline-primary">View</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <div class="col-12 text-center py-5">
+    <i class="fas fa-box-open fa-3x text-muted mb-3"></i>
+    <h5 class="text-muted">No products found</h5>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'products:create' %}" class="btn btn-brand mt-2">Add First Product</a>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% if page_obj.has_other_pages %}
+<nav class="mt-4">
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&q={{ query }}">Prev</a></li>{% endif %}
+    <li class="page-item active"><span class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span></li>
+    {% if page_obj.has_next %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}&q={{ query }}">Next</a></li>{% endif %}
+  </ul>
+</nav>
+{% endif %}
+{% endblock %}
